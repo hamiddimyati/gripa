@@ -34,4 +34,4 @@ jobs:
           poetry install
           poetry shell
           echo Run with different Python version
-          tox run
+          poetry run pytest
