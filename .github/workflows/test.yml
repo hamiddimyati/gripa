@@ -24,13 +24,33 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9.0
+      
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+          
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+        
+      - name: Install project
+        run: poetry install --no-interaction
+        
+      - name: Run tests
         run: |
-          echo Install Poetry
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo Setup virtual environment
-          poetry install
-          echo Run with different Python version
-          tox run
+          python -m poetry run python -m pytest -sxv
