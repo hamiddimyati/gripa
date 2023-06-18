@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "gripa"
+version = "0.1.0"
+description = "Time series anomaly detection"
+authors = ["hamiddimyati <hamid.dimyati@outlook.com>"]
+license = "MIT license"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.25.0"
+pandas = "^2.0.2"
+scikit-learn = "^1.2.2"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^3.3.3"
+tox = "^4.6.2"
+
+[tool.black]
+line-length = 88
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pandas.*",
+    "sklearn.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "-rxX --black --flake8 --mypy --verbose --cov-report term-missing --cov=gripa --color=yes"
+testpaths = [
+    "gripa",
+]
+log_cli = true
+log_cli_level = "WARNING"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
