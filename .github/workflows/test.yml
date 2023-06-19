@@ -53,4 +53,5 @@ jobs:
         
       - name: Run tests
         run: |
+          source .venv/bin/activate
           python -m poetry run python -m pytest -sxv
