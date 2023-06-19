@@ -42,12 +42,13 @@ module = [
     "numpy.*",
     "pandas.*",
     "pandas.testing.*",
+    "scipy.*",
     "sklearn.*",
 ]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
-addopts = "-rxX --black --ruff --isort --mypy --cov-report term-missing --cov=gripa tests/ --color=yes -v -s -n auto"
+addopts = "-rxX --black --ruff --isort --mypy --cov-report term-missing --cov=gripa --color=yes -v -s -n auto"
 testpaths = [
     "tests",
     "gripa",

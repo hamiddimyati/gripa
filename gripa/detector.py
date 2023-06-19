@@ -26,13 +26,13 @@ class Gripa(BaseEstimator, BaseDetector):
     def fit(self, data: Union[pd.DataFrame, pd.Series]) -> "BaseDetector":
         """ """
         self.validate_input_type(data)
-        if data.isnull().values.any():
+        if data.isnull().values.any():  # type: ignore
             raise ValueError("Data contains missing values. Please handle it properly.")
         else:
             pass
         if isinstance(data, pd.Series):
             df = data.copy().to_frame()
-        else:
+        elif isinstance(data, pd.DataFrame):
             df = data.copy()
         n_timestamps = df.shape[0]
         self._window_size_int = self.validate_params(
@@ -45,14 +45,19 @@ class Gripa(BaseEstimator, BaseDetector):
         elif self._algorithm == 'ssa':
             X_noise = SingularSpectrumAnalysis(self._window_size_int).transform(X)
         self.anomaly_score = np.abs(stats.zscore(X_noise))
-        if isinstance(data, pd.DataFrame):
-            self.anomaly_score = pd.DataFrame(
-                self.anomaly_score, index=data.index, columns=data.columns
-            )
-        elif isinstance(data, pd.Series):
-            self.anomaly_score = pd.Series(
-                self.anomaly_score.ravel(), index=data.index, name=data.name
-            )
+        if self.anomaly_score is not None:
+            if isinstance(data, pd.DataFrame):
+                self.anomaly_score = pd.DataFrame(
+                    self.anomaly_score, index=data.index, columns=data.columns
+                )
+            elif isinstance(data, pd.Series):
+                self.anomaly_score = pd.Series(
+                    self.anomaly_score.ravel(),  # type: ignore
+                    index=data.index,
+                    name=data.name,
+                )
+        else:
+            raise ValueError('The algorithm failed to produce anomaly scores.')
         return self
 
     @staticmethod

@@ -1,5 +1,3 @@
-from typing import Union
-
 import numpy as np
 
 from .utils import rolling_window
@@ -153,7 +151,7 @@ class SingularSpectrumAnalysis:
         n_series: int,
         n_timestamps: int,
         n_windows: int,
-        gap: Union[int, float],
+        gap: int,
     ) -> np.ndarray:
         """
         Reconstruct the element matrices into time series.
