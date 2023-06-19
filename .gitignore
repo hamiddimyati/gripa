@@ -167,3 +167,7 @@ cython_debug/
 # VSCode
 .vscode/
 .idea
+
+# dev files
+_debug.py
+tox.ini
