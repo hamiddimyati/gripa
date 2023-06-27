@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Time series anomaly detection"
 authors = ["hamiddimyati <hamid.dimyati@outlook.com>"]
 license = "MIT license"
+repository = "https://github.com/hamiddimyati/gripa"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.12"
