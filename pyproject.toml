@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gripa"
-version = "0.1.2"
+version = "0.1.3"
 description = "Time series anomaly detection"
 authors = ["hamiddimyati <hamid.dimyati@outlook.com>"]
 license = "MIT license"

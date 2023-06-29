@@ -28,7 +28,7 @@ python -m pip install gripa
 from gripa import Gripa
 
 detector = Gripa()
-anomalies = Gripa.fit_predict(data)
+anomalies = detector.fit_predict(data)
 ```
 
 ## API Reference
