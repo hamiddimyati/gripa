@@ -1,0 +1,5 @@
+site_name: Gripa
+theme:
+  name: material
+nav:
+  - Quickstart: 'index.md'
