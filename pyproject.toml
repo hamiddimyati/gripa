@@ -24,6 +24,10 @@ pytest-mypy = "^0.10.3"
 pytest-ruff = "^0.1"
 pandas-stubs = "^2.0.2.230605"
 
+
+[tool.poetry.group.doc.dependencies]
+mkdocs-material = "^9.1.17"
+
 [tool.ruff]
 line-length = 88
 src = ["gripa"]
