@@ -10,7 +10,7 @@ python -m pip install gripa
 
 ## Usage
 
-````
+```
 # Load data
 from gripa import Gripa
 
