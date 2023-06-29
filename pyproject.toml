@@ -4,6 +4,8 @@ version = "0.1.1"
 description = "Time series anomaly detection"
 authors = ["hamiddimyati <hamid.dimyati@outlook.com>"]
 license = "MIT license"
+readme = "README.md"
+homepage = "https://gripa.readthedocs.io/en/latest/"
 repository = "https://github.com/hamiddimyati/gripa"
 
 [tool.poetry.dependencies]

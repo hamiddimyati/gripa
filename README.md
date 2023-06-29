@@ -1,32 +1,54 @@
-# Gripa
+# Welcome to Gripa
 
 
-## About The Project
+## Introduction
 
-Time series anomaly detection.
+Gripa is a python package for time series anomaly detection. The name of Gripa is taken from Scandinavian languages, which means grab or catch or seize, and not meant as Flu in Spanish :smile:.
 
-## Getting Started
+### Why Gripa?
 
-Get a local copy up and running, then follow these simple example steps.
+* **Gripa is light-weight.** Try Gripa before you build LSTM or Transformer for your time series anomaly detection.
+* **Gripa is accurate.** Gripa has two available algorithms that perform very well in detecting anomalies on your time series data.
+* **Gripa is comprehensive.** Gripa can detect three types of anomaly: global anomaly, contextual anomaly, and level-shift.
 
-### Prerequisites
-
-This program requires `Poetry` as its virtual environment and package manager. Please install using the command below:
-* `Poetry`
-   ```sh
-   curl -sSL https://install.python-poetry.org | python3 -
-   ```
+## Quick Start
 
 ### Installation
 
+> **`Python 3.9`** or higher is required.
+
 ```sh
-pip install gripa
+python -m pip install gripa
 ```
 
-## Usage
+### Usage
+
+```sh
+# Load data
+from gripa import Gripa
+
+detector = Gripa()
+anomalies = Gripa.fit_predict(data)
+```
 
 ## API Reference
 
+There is only one module, `gripa.Gripa`, that can be used for detecting anomalies in time series.
+
+> *class* gripa.**Gripa**(*window_size=11, algorithm="hpf", threshold=3*)
+
+### Parameters
+* `window_size`: *int or float, default=11*
+* `algorithm`: *{"hpf", "ssa"}, default="hpf"*
+* `threshold`: *float, default=3*
+
+### Attributes
+* `anomaly_score`: score for labelling anomaly
+
+### Methods
+* `fit(X)`: train the Gripa model, which can generate attribute `anomaly_score`
+* `fit_predict(X)`: train and generate anomaly labels (`True` or `False`)
+
 ## Contact
 
-hamiddimyati <hamid.dimyati@outlook.com>
+Hamid Dimyati - <hamid.dimyati@outlook.com>

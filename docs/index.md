@@ -1,17 +1,9 @@
-# Welcome to MkDocs
+# Welcome to Gripa
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Gripa is a python package for time series anomaly detection. The name of Gripa is taken from Scandinavian languages, which means grab or catch or seize, and not meant as Flu in Spanish :smile:.
 
-## Commands
+## Why Gripa?
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* **Gripa is light-weight.** Try Gripa before you build LSTM or Transformer for your time series anomaly detection.
+* **Gripa is accurate.** Gripa has two available algorithms that perform very well in detecting anomalies on your time series data.
+* **Gripa is comprehensive.** Gripa can detect three types of anomaly: global anomaly, contextual anomaly, and level-shift.
