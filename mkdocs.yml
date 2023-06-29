@@ -1,5 +1,16 @@
 site_name: Gripa
+
 theme:
   name: material
+
 nav:
-  - Quickstart: 'index.md'
+  - Introduction: 'index.md'
+  - Quick Start: 'quick_start.md'
+  - User Guide: 'user_guide.md'
+  - API Reference: 'api.md'
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: tag:yaml.org,2002:python/name:materialx.emoji.twemoji
+      emoji_generator: tag:yaml.org,2002:python/name:materialx.emoji.to_svg
